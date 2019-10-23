@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  ClientServer
+//  Delegat
 //
-//  Created by Alex Larin on 21/10/2019.
+//  Created by Alex Larin on 23/10/2019.
 //  Copyright © 2019 Alex Larin. All rights reserved.
 //
 
