@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  GroupsViewController.swift
 //  ClientServer
 //
 //  Created by Alex Larin on 27.10.2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class GroupsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

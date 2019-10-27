@@ -1,20 +1,40 @@
 //
-//  MainViewController.swift
+//  LaunchViewController.swift
 //  ClientServer
 //
-//  Created by Alex Larin on 27.10.2019.
+//  Created by Alex Larin on 21/10/2019.
 //  Copyright © 2019 Alex Larin. All rights reserved.
 //
 
 import UIKit
+import WebKit
 
-class MainViewController: UIViewController {
+class LaunchViewController: UIViewController {
+   
+  
+    @IBOutlet weak var VKWebView: WKWebView!
+    
+    
+    
+   
+    
+    
+ 
+        
+    //   let changeColorNotification = Notification.Name("ChangeColorNotification")
+     //  1 NotificationCenter.default.post(name: changeColorNotification, object: nil)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   
+    
+    
+    
+    
 
-        // Do any additional setup after loading the view.
-    }
+   
+    
+    
+    
+    
     
 
     /*
