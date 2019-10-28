@@ -9,10 +9,12 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    let vkService = VKService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        vkService.loadPhotosData()
         // Do any additional setup after loading the view.
     }
     

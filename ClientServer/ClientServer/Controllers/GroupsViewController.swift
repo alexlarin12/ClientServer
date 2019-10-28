@@ -9,10 +9,12 @@
 import UIKit
 
 class GroupsViewController: UIViewController {
-
+    let vkService = VKService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        vkService.loadGroupsData()
         // Do any additional setup after loading the view.
     }
     

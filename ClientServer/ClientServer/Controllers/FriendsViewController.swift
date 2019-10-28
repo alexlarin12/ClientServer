@@ -9,9 +9,13 @@
 import UIKit
 
 class FriendsViewController: UIViewController {
-
+    let vkService = VKService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        vkService.loadFriendData()
+        
 
         // Do any additional setup after loading the view.
     }

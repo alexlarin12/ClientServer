@@ -8,13 +8,33 @@
 
 import UIKit
 import WebKit
+import Alamofire
 
-class LaunchViewController: UIViewController {
-   
+class VKViewController: UIViewController {
+    let vkService = VKService()
+    let session = Session.instance
   
-    @IBOutlet weak var VKWebView: WKWebView!
-    
-    
+    @IBOutlet weak var webview: WKWebView!{
+          didSet{webview.navigationDelegate = self
+       }
+   }
+    override func viewDidLoad() {
+         super.viewDidLoad()
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "oauth.vk.com"
+        urlComponents.path = "/authorize"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: "7143864"),
+            URLQueryItem(name: "display", value: "mobile"),
+            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+            URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "v", value: "5.101")
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        webview.load(request)
+}
     
    
     
