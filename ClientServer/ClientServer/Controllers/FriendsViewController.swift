@@ -10,13 +10,15 @@ import UIKit
 
 class FriendsViewController: UIViewController {
     let vkService = VKService()
+    var friends = [ItemsFriend]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vkService.loadFriendData()
         
-
+        
+      //  let friend = [vkService.self]
+      //  print(friend)
         // Do any additional setup after loading the view.
     }
     

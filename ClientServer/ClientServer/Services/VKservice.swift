@@ -12,45 +12,108 @@ import Alamofire
 class VKService {
   
     let access_token = Session.instance.token
+    let user_id = String(Session.instance.userId)
+    var friends = [ItemsFriend]()
     
-    func loadFriendData(){
-        let paramters:Parameters = [
-            "user_ids": 7143864,
-            "fields" : "bdate",
-            "access_token": access_token,
-            "v": "5.101"
+    func  loadFriendsData() {
+        var urlConstructor = URLComponents()
+        urlConstructor.scheme = "https"
+        urlConstructor.host = "api.vk.com"
+        urlConstructor.path = "/method/friends.get"
+        urlConstructor.queryItems = [
+        URLQueryItem(name: "user_ids", value:user_id),
+        URLQueryItem(name: "fields", value: "bdate"),
+        URLQueryItem(name: "access_token", value:access_token),
+        URLQueryItem(name: "v", value: "5.101")
         ]
-        SessionManager.custom.request("https://api.vk.com/method/friends.get", parameters: paramters).responseJSON{
+        let request = URLRequest(url: urlConstructor.url!)
+        SessionManager.custom.request(request).responseData{
             response in
-            print(response.value ?? "no friends")
+            guard let data = response.value else {
+                return
+            }
+            do {
+                let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
+                print(friends ?? "no friends")
+                
+            }catch{
+                print(error)
+            }
         }
-     }
-
-    func loadGroupsData(){
-        let paramters:Parameters = [
-            "user_ids" : 7143864,
-            "extended" : 1,
-            "fields" : "site",
-            "access_token" : access_token,
-            "v" : "5.101"
+    }
+    func loadPhotosData() {
+        var urlConstructor = URLComponents()
+        urlConstructor.scheme = "https"
+        urlConstructor.host = "api.vk.com"
+        urlConstructor.path = "/method/photos.getAll"
+        urlConstructor.queryItems = [
+            URLQueryItem(name: "owner_id", value: "-\(user_id)"),
+            URLQueryItem(name: "access_token", value:access_token),
+            URLQueryItem(name: "v", value: "5.101")
         ]
-        SessionManager.custom.request("https://api.vk.com/method/groups.get", parameters: paramters).responseJSON{
+        let request = URLRequest(url: urlConstructor.url!)
+        SessionManager.custom.request(request).responseData{
             response in
-            print(response.value ?? "no groups")
+            guard let data = response.value else {
+                return
+            }
+            do {
+                let photos = try JSONDecoder().decode(PhotoUserModel.self, from: data).response?.items
+                print(photos ?? "no photos")
+            }catch{
+                print(error)
+            }
         }
-     }
-    
-    func loadPhotosData(){
-        let paramters:Parameters = [
-            "owner_id" : -7143864,
-            "access_token" : access_token,
-            "v" : "5.101"
+    }
+    func loadGroupsData() {
+        var urlConstructor = URLComponents()
+        urlConstructor.scheme = "https"
+        urlConstructor.host = "api.vk.com"
+        urlConstructor.path = "/method/groups.get"
+        urlConstructor.queryItems = [
+            URLQueryItem(name: "user_ids", value:user_id),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "fields", value: "site"),
+            URLQueryItem(name: "access_token", value:access_token),
+            URLQueryItem(name: "v", value: "5.101")
         ]
-        
-        SessionManager.custom.request("https://api.vk.com/method/photos.getAll", parameters: paramters).responseJSON {
+        let request = URLRequest(url: urlConstructor.url!)
+        SessionManager.custom.request(request).responseData{
             response in
-            print(response.value ?? "no photos")
-    
+            guard let data = response.value else {
+                return
+            }
+            do {
+                let groupss = try JSONDecoder().decode(GroupUserModel.self, from: data).response?.items
+                print(groupss ?? "no groups")
+            }catch{
+                print(error)
+            }
         }
-     }
+    }
+    func loadFriendsReturnData() {
+        var urlConstructor = URLComponents()
+        urlConstructor.scheme = "https"
+        urlConstructor.host = "api.vk.com"
+        urlConstructor.path = "/method/friends.get"
+        urlConstructor.queryItems = [
+            URLQueryItem(name: "user_ids", value:user_id),
+            URLQueryItem(name: "fields", value: "bdate"),
+            URLQueryItem(name: "access_token", value:access_token),
+            URLQueryItem(name: "v", value: "5.101")
+        ]
+        let request = URLRequest(url: urlConstructor.url!)
+        SessionManager.custom.request(request).responseData{
+            response in
+            guard let data = response.value else {
+                return
+            }
+            do {
+                let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
+                print(friends ?? "no friends")
+            }catch{
+                print(error)
+            }
+        }
+    }
 }
