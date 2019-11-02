@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  FriendsViewController.swift
 //  ClientServer
 //
 //  Created by Alex Larin on 27.10.2019.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class FriendsViewController: UIViewController {
     let vkService = VKService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vkService.loadPhotosData()
+        vkService.loadFriendData()
+        
+
         // Do any additional setup after loading the view.
     }
     

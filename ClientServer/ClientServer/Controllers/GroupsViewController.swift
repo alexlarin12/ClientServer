@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  GroupsViewController.swift
 //  ClientServer
 //
 //  Created by Alex Larin on 27.10.2019.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class GroupsViewController: UIViewController {
     let vkService = VKService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vkService.loadPhotosData()
+        vkService.loadGroupsData()
         // Do any additional setup after loading the view.
     }
     
