@@ -1,28 +1,25 @@
 //
-//  FriendsTableViewController.swift
+//  GroupsTableViewController.swift
 //  ClientServer
 //
-//  Created by Alex Larin on 31.10.2019.
+//  Created by Alex Larin on 06.11.2019.
 //  Copyright © 2019 Alex Larin. All rights reserved.
 //
 
 import UIKit
 
-class FriendsTableViewController: UITableViewController {
-    let vkService = VKService()
-    var friends = [ItemsFriend]()
-  
+class GroupsTableViewController: UITableViewController {
+let vkService = VKService()
     override func viewDidLoad() {
         super.viewDidLoad()
-    
- 
-        vkService.loadFriendsData()
-     
-        
-    }
-    
+        vkService.loadGroupsData()        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
 
-  
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -31,14 +28,15 @@ class FriendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friends.count
+        return 8
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendIdentifire", for: indexPath) as! FriendCell
-         cell.FriendLabel.text = friends[indexPath.row].firstName
-     //   cell.FriendImage.image = friends[indexPath.row].       // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupIdentifire", for: indexPath) as! GroupCell
+        cell.GroupLabel.text = "Geek Brains"
+
+        // Configure the cell...
 
         return cell
     }

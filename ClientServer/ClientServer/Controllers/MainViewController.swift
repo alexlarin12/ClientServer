@@ -11,6 +11,12 @@ import UIKit
 class MainViewController: UIViewController {
     let vkService = VKService()
     
+    @IBOutlet weak var GradientView: GradientView!
+    @IBOutlet weak var ShadowView: ShadowView!
+    @IBOutlet weak var MainImageView: UIImageView!
+    @IBOutlet weak var MainLabel: UILabel!
+    @IBOutlet weak var MainCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

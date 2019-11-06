@@ -8,13 +8,13 @@
 
 import Foundation
 import UIKit
-class FriendUserModel: Codable {
+class FriendUserModel: Decodable {
     let response:ResponseFriend?
     enum UserFriendKeys:String, CodingKey {
         case response = "response"
     }
 }
-class ResponseFriend: Codable {
+class ResponseFriend: Decodable {
     var count:Int
     var items:[ItemsFriend]?
     enum ResponseFriendKeys:String,CodingKey {
@@ -22,15 +22,15 @@ class ResponseFriend: Codable {
         case items = "items"
     }
 }
-class ItemsFriend: Codable {
-    var id:Int = 0
-    var firstName:String = ""
-    var lastName:String = ""
-    var isClosed:Bool = true
-    var canAccessClosed:Bool = true
+class ItemsFriend:NSObject, Decodable{
+    dynamic var id:Int = 0
+    dynamic var firstName:String = ""
+    dynamic var lastName:String = ""
+    dynamic var isClosed:Bool = true
+    dynamic var canAccessClosed:Bool = true
     //   var bdate:String = ""
-    var online:Int = 0
-    var trackCode:String = ""
+    dynamic var online:Int = 0
+    dynamic var trackCode:String = ""
     enum ItemsFriendKeys:String, CodingKey {
         case id = "id"
         case firstName = "first_name"
@@ -52,5 +52,8 @@ class ItemsFriend: Codable {
         //        self.bdate = try values.decode(String.self, forKey: .bdate)
         self.online = try values.decode(Int.self, forKey: .online)
         self.trackCode = try values.decode(String.self, forKey: .trackCode)
+        print(firstName)
+        print(lastName)
+        print(id)
     }
 }

@@ -13,7 +13,6 @@ class VKService {
   
     let access_token = Session.instance.token
     let user_id = String(Session.instance.userId)
-    var friends = [ItemsFriend]()
     
     func  loadFriendsData() {
         var urlConstructor = URLComponents()
@@ -35,7 +34,6 @@ class VKService {
             do {
                 let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
                 print(friends ?? "no friends")
-                
             }catch{
                 print(error)
             }
@@ -65,6 +63,7 @@ class VKService {
             }
         }
     }
+
     func loadGroupsData() {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
@@ -72,6 +71,7 @@ class VKService {
         urlConstructor.path = "/method/groups.get"
         urlConstructor.queryItems = [
             URLQueryItem(name: "user_ids", value:user_id),
+        //  URLQueryItem(name: <#T##String#>, value: text),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "fields", value: "site"),
             URLQueryItem(name: "access_token", value:access_token),
@@ -84,14 +84,15 @@ class VKService {
                 return
             }
             do {
-                let groupss = try JSONDecoder().decode(GroupUserModel.self, from: data).response?.items
-                print(groupss ?? "no groups")
+                let groups = try JSONDecoder().decode(GroupUserModel.self, from: data).response?.items
+                print(groups ?? "no groups")
             }catch{
                 print(error)
             }
         }
     }
-    func loadFriendsReturnData() {
+    /*
+    func loadFriendsReturnData(completion: @escaping ([ItemsFriend]) -> Void ) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
         urlConstructor.host = "api.vk.com"
@@ -110,10 +111,16 @@ class VKService {
             }
             do {
                 let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
+                completion(friends!)
+               
                 print(friends ?? "no friends")
+                
+                
             }catch{
                 print(error)
             }
         }
     }
+ */
 }
+
