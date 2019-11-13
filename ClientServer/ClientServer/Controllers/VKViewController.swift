@@ -18,6 +18,9 @@ class VKViewController: UIViewController {
           didSet{webview.navigationDelegate = self
        }
    }
+    @IBAction func UnwindSegue(unwindSegue:UIStoryboardSegue){
+        
+    }
     override func viewDidLoad() {
          super.viewDidLoad()
         var urlComponents = URLComponents()
