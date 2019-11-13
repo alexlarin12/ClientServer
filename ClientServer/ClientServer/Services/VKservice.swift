@@ -8,13 +8,52 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 class VKService {
   
     let access_token = Session.instance.token
     let user_id = String(Session.instance.userId)
     
-    func  loadFriendsData() {
+    func saveFriendsData(_ friends: [ItemsFriend]) {
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.add(friends)
+            try realm.commitWrite()
+           
+        } catch {
+            print(error)
+        }
+    }
+    func saveGroupsData(_ groups: [ItemsGroup]) {
+       
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.add(groups)
+            try realm.commitWrite()
+            
+        } catch {
+            print(error)
+        }
+    }
+    func saveUserData(_ user: [User]) {
+        
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.add(user)
+            try realm.commitWrite()
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+    
+    func  loadFriendsData(completion: @escaping ([ItemsFriend])->()) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
         urlConstructor.host = "api.vk.com"
@@ -22,6 +61,7 @@ class VKService {
         urlConstructor.queryItems = [
         URLQueryItem(name: "user_ids", value:user_id),
         URLQueryItem(name: "fields", value: "bdate"),
+        URLQueryItem(name: "fields", value: "photo_50"),
         URLQueryItem(name: "access_token", value:access_token),
         URLQueryItem(name: "v", value: "5.101")
         ]
@@ -34,6 +74,8 @@ class VKService {
             do {
                 let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
                 print(friends ?? "no friends")
+                self.saveFriendsData(friends ?? [])
+                completion(friends!)
             }catch{
                 print(error)
             }
@@ -64,7 +106,8 @@ class VKService {
         }
     }
 
-    func loadGroupsData() {
+    
+    func loadGroupsData(completion: @escaping ([ItemsGroup])->()) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
         urlConstructor.host = "api.vk.com"
@@ -86,20 +129,21 @@ class VKService {
             do {
                 let groups = try JSONDecoder().decode(GroupUserModel.self, from: data).response?.items
                 print(groups ?? "no groups")
+                self.saveGroupsData(groups ?? [])
+                completion(groups!)
             }catch{
                 print(error)
             }
         }
     }
-    /*
-    func loadFriendsReturnData(completion: @escaping ([ItemsFriend]) -> Void ) {
+    func  loadUserData(completion: @escaping ([User])->()) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
         urlConstructor.host = "api.vk.com"
-        urlConstructor.path = "/method/friends.get"
+        urlConstructor.path = "/method/users.get"
         urlConstructor.queryItems = [
             URLQueryItem(name: "user_ids", value:user_id),
-            URLQueryItem(name: "fields", value: "bdate"),
+            URLQueryItem(name: "fields", value: "photo_50"),
             URLQueryItem(name: "access_token", value:access_token),
             URLQueryItem(name: "v", value: "5.101")
         ]
@@ -110,17 +154,15 @@ class VKService {
                 return
             }
             do {
-                let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
-                completion(friends!)
-               
-                print(friends ?? "no friends")
-                
-                
+                let user = try JSONDecoder().decode(UserModel.self, from: data).response
+                print(user ?? "no user")
+                self.saveUserData(user ?? [])
+                completion(user!)
             }catch{
                 print(error)
             }
         }
     }
- */
+    
 }
 

@@ -26,19 +26,10 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hex-J7-krh">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="1qQ-WA-agi" kind="showDetail" id="SX3-db-Fcu"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Hex-J7-krh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DcF-nV-PYK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vlZ-Wm-cwb" secondAttribute="trailing" id="UOJ-hB-AVD"/>
-                            <constraint firstItem="Hex-J7-krh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZnT-XY-bRy"/>
                             <constraint firstItem="vlZ-Wm-cwb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="izY-lL-oMy"/>
                             <constraint firstItem="vlZ-Wm-cwb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p7r-RP-nk0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vlZ-Wm-cwb" secondAttribute="bottom" id="vSs-Jt-Yal"/>
@@ -47,6 +38,7 @@
                     </view>
                     <connections>
                         <outlet property="webview" destination="vlZ-Wm-cwb" id="VLH-z3-weT"/>
+                        <segue destination="1qQ-WA-agi" kind="show" identifier="fromVKViewController" id="o5I-OK-ROL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,15 +87,23 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMu-Qf-FF0">
+                                                    <rect key="frame" x="142" y="27.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="5pc-yt-ygo" firstAttribute="top" secondItem="mRJ-fg-xQI" secondAttribute="top" constant="8" id="A3d-9w-qSj"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0xm-Zy-daN" secondAttribute="trailing" constant="16" id="EwO-I0-eFC"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HMu-Qf-FF0" secondAttribute="trailing" constant="16" id="Ap7-Xw-cFB"/>
+                                                <constraint firstItem="HMu-Qf-FF0" firstAttribute="centerY" secondItem="0xm-Zy-daN" secondAttribute="centerY" id="VYj-ZN-y8p"/>
                                                 <constraint firstAttribute="bottom" secondItem="5pc-yt-ygo" secondAttribute="bottom" constant="8" id="VhU-BS-2XW"/>
                                                 <constraint firstItem="5pc-yt-ygo" firstAttribute="leading" secondItem="mRJ-fg-xQI" secondAttribute="leading" constant="16" id="ewJ-dv-mmX"/>
                                                 <constraint firstItem="5pc-yt-ygo" firstAttribute="centerY" secondItem="mRJ-fg-xQI" secondAttribute="centerY" id="hSa-Jg-huU"/>
                                                 <constraint firstItem="0xm-Zy-daN" firstAttribute="leading" secondItem="5pc-yt-ygo" secondAttribute="trailing" constant="16" id="hk0-VE-xiF"/>
+                                                <constraint firstItem="HMu-Qf-FF0" firstAttribute="leading" secondItem="0xm-Zy-daN" secondAttribute="trailing" constant="8" id="k6v-HC-xen"/>
                                                 <constraint firstItem="0xm-Zy-daN" firstAttribute="centerY" secondItem="5pc-yt-ygo" secondAttribute="centerY" id="q9z-Zn-PxN"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -111,13 +111,13 @@
                                                     <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                                                    <real key="value" value="1"/>
+                                                    <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
                                                     <point key="value" x="1" y="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
-                                                    <point key="value" x="0.0" y="1"/>
+                                                    <point key="value" x="0.0" y="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                                     <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,6 +140,7 @@
                                     <outlet property="FriendImageView" destination="uaV-nO-CLQ" id="6py-Er-Pqi"/>
                                     <outlet property="FriendLabel" destination="0xm-Zy-daN" id="AP8-6q-SDX"/>
                                     <outlet property="GradientView" destination="mRJ-fg-xQI" id="dTl-EN-67G"/>
+                                    <outlet property="LastNameFriendLabel" destination="HMu-Qf-FF0" id="vsI-b0-y6Y"/>
                                     <outlet property="ShadowView" destination="5pc-yt-ygo" id="BLa-4Y-mhq"/>
                                 </connections>
                             </tableViewCell>
@@ -204,12 +205,21 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aF-Xx-bT9">
+                                                    <rect key="frame" x="92" y="51" width="35.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="2aF-Xx-bT9" firstAttribute="leading" secondItem="w4f-jp-Bqc" secondAttribute="leading" id="8iM-ka-4NZ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2aF-Xx-bT9" secondAttribute="trailing" constant="16" id="DgN-Fb-8Zq"/>
                                                 <constraint firstItem="VVf-KY-APm" firstAttribute="centerY" secondItem="bnb-S0-XVI" secondAttribute="centerY" id="ISM-sJ-oBq"/>
                                                 <constraint firstItem="w4f-jp-Bqc" firstAttribute="leading" secondItem="VVf-KY-APm" secondAttribute="trailing" constant="16" id="Io0-dx-TyE"/>
                                                 <constraint firstItem="w4f-jp-Bqc" firstAttribute="centerY" secondItem="VVf-KY-APm" secondAttribute="centerY" id="JlT-uc-lP8"/>
+                                                <constraint firstItem="2aF-Xx-bT9" firstAttribute="top" secondItem="w4f-jp-Bqc" secondAttribute="bottom" constant="2" id="Pmd-Yb-UiA"/>
                                                 <constraint firstItem="VVf-KY-APm" firstAttribute="leading" secondItem="bnb-S0-XVI" secondAttribute="leading" constant="16" id="Ul2-Ko-PV8"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w4f-jp-Bqc" secondAttribute="trailing" constant="16" id="VFC-Zn-x9j"/>
                                                 <constraint firstItem="VVf-KY-APm" firstAttribute="top" secondItem="bnb-S0-XVI" secondAttribute="top" constant="8" id="fxx-9B-Dm8"/>
@@ -226,7 +236,7 @@
                                                     <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                                                    <real key="value" value="1"/>
+                                                    <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
                                                     <point key="value" x="1" y="0.0"/>
@@ -249,6 +259,7 @@
                                     <outlet property="GroupImageView" destination="kRz-a1-lDt" id="w3u-oE-Apo"/>
                                     <outlet property="GroupLabel" destination="w4f-jp-Bqc" id="v2M-f3-3Cq"/>
                                     <outlet property="ShadowView" destination="VVf-KY-APm" id="HZt-CN-1j6"/>
+                                    <outlet property="SiteGroupLabel" destination="2aF-Xx-bT9" id="FjP-MI-0Am"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -321,15 +332,23 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEi-9B-u8p">
+                                        <rect key="frame" x="142" y="39.5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="OHj-C7-MFC" firstAttribute="centerY" secondItem="kEJ-UO-r1a" secondAttribute="centerY" id="Moq-Hc-wP3"/>
                                     <constraint firstAttribute="height" constant="100" id="VtE-9H-7Q4"/>
+                                    <constraint firstItem="AEi-9B-u8p" firstAttribute="centerY" secondItem="OHj-C7-MFC" secondAttribute="centerY" id="ZHd-9H-Vzz"/>
+                                    <constraint firstItem="AEi-9B-u8p" firstAttribute="leading" secondItem="OHj-C7-MFC" secondAttribute="trailing" constant="8" id="ZYa-gC-pHx"/>
                                     <constraint firstItem="kEJ-UO-r1a" firstAttribute="leading" secondItem="kwl-pG-TJr" secondAttribute="leading" constant="16" id="dmr-1I-W4u"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AEi-9B-u8p" secondAttribute="trailing" constant="20" id="gYY-ZA-C74"/>
                                     <constraint firstItem="kEJ-UO-r1a" firstAttribute="centerY" secondItem="kwl-pG-TJr" secondAttribute="centerY" id="jog-sg-N7g"/>
                                     <constraint firstItem="OHj-C7-MFC" firstAttribute="leading" secondItem="kEJ-UO-r1a" secondAttribute="trailing" constant="16" id="lhb-dM-CQP"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OHj-C7-MFC" secondAttribute="trailing" constant="16" id="zQv-TQ-gjg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -395,6 +414,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="GradientView" destination="kwl-pG-TJr" id="Zfu-d5-y8Y"/>
+                        <outlet property="LastNameUserLabel" destination="AEi-9B-u8p" id="0ja-j2-BKJ"/>
                         <outlet property="MainCollectionView" destination="AAy-mv-647" id="g0n-BD-CKb"/>
                         <outlet property="MainImageView" destination="H5p-s6-8c3" id="1Wv-TL-iNP"/>
                         <outlet property="MainLabel" destination="OHj-C7-MFC" id="ktv-bZ-Ioz"/>

@@ -21,6 +21,7 @@ class VKViewController: UIViewController {
     @IBAction func UnwindSegue(unwindSegue:UIStoryboardSegue){
         
     }
+    
     override func viewDidLoad() {
          super.viewDidLoad()
         var urlComponents = URLComponents()
@@ -56,18 +57,28 @@ class VKViewController: UIViewController {
    
     
     
-    
-    
+  
     
 
-    /*
+    
     // MARK: - Navigation
-
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
+     
+     
+        if segue.identifier == "RegistrationIdentifire",
+            let oneFriendController = segue.destination as? OneFriendCollectionViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            let name = friends[indexPath.row].friendName
+            let image = friends[indexPath.row].friendImage
+            oneFriendController.friendNameForTitle = name
+            oneFriendController.friendImageForCollection = image
+        }
+    }        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */
+   
 
 }

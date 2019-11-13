@@ -10,9 +10,14 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 let vkService = VKService()
+    var groups = [ItemsGroup]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkService.loadGroupsData()        // Uncomment the following line to preserve selection between presentations
+        vkService.loadGroupsData() {[weak self] groups in
+            self?.groups = groups
+            self?.tableView.reloadData()
+            
+        }       // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -28,14 +33,19 @@ let vkService = VKService()
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        return groups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupIdentifire", for: indexPath) as! GroupCell
-        cell.GroupLabel.text = "Geek Brains"
+        cell.GroupLabel.text = groups[indexPath.row].name
+        cell.SiteGroupLabel.text = groups[indexPath.row].site
 
+        let avatar = groups[indexPath.row].photo50
+        let urlAvatar = URL(string: avatar)!
+        let dataAvatar = try? Data(contentsOf: urlAvatar)
+        cell.GroupImageView.image = UIImage(data: dataAvatar!)
         // Configure the cell...
 
         return cell
