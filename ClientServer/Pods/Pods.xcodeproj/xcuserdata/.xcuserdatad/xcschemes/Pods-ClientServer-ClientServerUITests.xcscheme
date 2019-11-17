@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D9777ADAE8F5D4999E57BCDE4997BE86"
+               BlueprintIdentifier = "F0EDA9D37A983BA3F054246C3EFC6809"
                BlueprintName = "Pods-ClientServer-ClientServerUITests"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "Pods-ClientServer-ClientServerUITests.framework">

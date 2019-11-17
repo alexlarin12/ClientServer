@@ -14,6 +14,7 @@ class GroupCell: UITableViewCell {
     @IBOutlet weak var ShadowView: ShadowView!
     @IBOutlet weak var GroupImageView: UIImageView!
     @IBOutlet weak var GroupLabel: UILabel!
+    @IBOutlet weak var SiteGroupLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

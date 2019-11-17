@@ -32,12 +32,14 @@ extension VKViewController: WKNavigationDelegate {
         
         let token = params["access_token"]
         let userId = params["user_id"]
-      //  print(token ?? "token is empty")
+        print(token ?? "token is empty")
+        print(userId ?? "")
        // print(userId ?? "userId is empty")
         
         session.token = token ?? ""
         session.userId = Int(userId ?? "") ?? 0
         
+        performSegue(withIdentifier: "fromVKViewController", sender: token)
         decisionHandler(.cancel)
     }
 }

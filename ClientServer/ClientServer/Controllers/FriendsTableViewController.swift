@@ -7,23 +7,23 @@
 //
 
 import UIKit
+import Realm
 
 class FriendsTableViewController: UITableViewController {
     let vkService = VKService()
     var friends = [ItemsFriend]()
-  
     override func viewDidLoad() {
         super.viewDidLoad()
     
  
-        vkService.loadFriendsData()
-     
+        vkService.loadFriendsData(){[weak self] friends in
+            self?.friends = friends
+            self?.tableView.reloadData()
+            
+        }
         
     }
     
-
-  
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -37,8 +37,13 @@ class FriendsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendIdentifire", for: indexPath) as! FriendCell
-         cell.FriendLabel.text = friends[indexPath.row].firstName
-     //   cell.FriendImage.image = friends[indexPath.row].       // Configure the cell...
+        cell.FriendLabel.text = friends[indexPath.row].firstName
+        cell.LastNameFriendLabel.text = friends[indexPath.row].lastName
+        
+        let avatar = friends[indexPath.row].photo50
+        let urlAvatar = URL(string: avatar)!
+        let dataAvatar = try? Data(contentsOf: urlAvatar)
+        cell.FriendImageView.image = UIImage(data: dataAvatar!)
 
         return cell
     }

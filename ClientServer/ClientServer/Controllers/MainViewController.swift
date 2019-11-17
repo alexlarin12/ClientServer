@@ -10,18 +10,34 @@ import UIKit
 
 class MainViewController: UIViewController {
     let vkService = VKService()
+    var user = [User]()
     
     @IBOutlet weak var GradientView: GradientView!
     @IBOutlet weak var ShadowView: ShadowView!
     @IBOutlet weak var MainImageView: UIImageView!
     @IBOutlet weak var MainLabel: UILabel!
     @IBOutlet weak var MainCollectionView: UICollectionView!
+    @IBOutlet weak var LastNameUserLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vkService.loadPhotosData()
-        // Do any additional setup after loading the view.
+     vkService.loadUserData(){[weak self] user in
+            self?.user = user
+            print(user)
+        for i in user{
+            self?.MainLabel.text = i.firstName
+            self?.LastNameUserLabel.text = i.lastName
+            let avatar = i.photo50
+            let urlAvatar = URL(string: avatar)!
+            let dataAvatar = try? Data(contentsOf: urlAvatar)
+            self?.MainImageView.image = UIImage(data: dataAvatar!)
+            
+        }
+       
+            
+        } // Do any additional setup after loading the view.
+      
     }
     
 
