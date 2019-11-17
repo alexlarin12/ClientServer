@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 class UserModel: Decodable {
     let response:[User]?
@@ -16,14 +15,14 @@ class UserModel: Decodable {
     }
 }
 
-class User :Object, Decodable{
+class User : Decodable{
     
-   @objc dynamic var id:Int = 0
-   @objc dynamic var firstName:String = ""
-   @objc dynamic var lastName:String = ""
-   @objc dynamic var isClosed:Bool = true
-   @objc dynamic var canAccessClosed:Bool = true
-   @objc dynamic var photo50:String = ""
+    var id:Int = 0
+    var firstName:String = ""
+    var lastName:String = ""
+    var isClosed:Bool = true
+    var canAccessClosed:Bool = true
+    var photo50:String = ""
    
     enum UserKeys:String, CodingKey {
         case id = "id"

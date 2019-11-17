@@ -10,48 +10,16 @@ import Foundation
 import Alamofire
 import RealmSwift
 
+   var friendsRealm = [ItemsFriendRealm]()
+   var groupsRealm = [ItemsGroupRealm]()
+   var usersRealm = [UserRealm]()
+
+
 class VKService {
-  
-    let access_token = Session.instance.token
-    let user_id = String(Session.instance.userId)
-    
-    func saveFriendsData(_ friends: [ItemsFriend]) {
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            realm.add(friends)
-            try realm.commitWrite()
-           
-        } catch {
-            print(error)
-        }
-    }
-    func saveGroupsData(_ groups: [ItemsGroup]) {
-       
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            realm.add(groups)
-            try realm.commitWrite()
-            
-        } catch {
-            print(error)
-        }
-    }
-    func saveUserData(_ user: [User]) {
-        
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            realm.add(user)
-            try realm.commitWrite()
-            
-        } catch {
-            print(error)
-        }
-    }
-    
-    
+    var access_token = Session.instance.token
+    var user_id = String(Session.instance.userId)
+    var friends = [ItemsFriend]()
+    var saveRealmData = SaveRealmData()
     
     func  loadFriendsData(completion: @escaping ([ItemsFriend])->()) {
         var urlConstructor = URLComponents()
@@ -74,13 +42,19 @@ class VKService {
             do {
                 let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
                 print(friends ?? "no friends")
-                self.saveFriendsData(friends ?? [])
-                completion(friends!)
+                for friend in friends!{
+                  let friendRealm = ItemsFriendRealm(value: [friend.id, friend.firstName,friend.lastName, friend.isClosed ?? true,friend.canAccessClosed ?? true, friend.photo50,friend.online,friend.trackCode])
+                  friendsRealm.append(friendRealm)
+                }
+               self.saveRealmData.saveFriendsData(friendsRealm)
+               
+               completion(friends!)
             }catch{
                 print(error)
             }
         }
     }
+    
     func loadPhotosData() {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
@@ -106,7 +80,6 @@ class VKService {
         }
     }
 
-    
     func loadGroupsData(completion: @escaping ([ItemsGroup])->()) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
@@ -129,13 +102,19 @@ class VKService {
             do {
                 let groups = try JSONDecoder().decode(GroupUserModel.self, from: data).response?.items
                 print(groups ?? "no groups")
-                self.saveGroupsData(groups ?? [])
+                for group in groups ?? []{
+                    let groupRealm = ItemsGroupRealm(value: [group.id, group.name,group.screenName, group.isClosed , group.type,group.isAdmin,group.isMember, group.isAdvertiser, group.site, group.photo50,group.photo100, group.photo200])
+                    groupsRealm.append(groupRealm)
+                }
+
+                self.saveRealmData.saveGroupsData(groupsRealm)
                 completion(groups!)
             }catch{
                 print(error)
             }
         }
     }
+    
     func  loadUserData(completion: @escaping ([User])->()) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
@@ -156,7 +135,11 @@ class VKService {
             do {
                 let user = try JSONDecoder().decode(UserModel.self, from: data).response
                 print(user ?? "no user")
-                self.saveUserData(user ?? [])
+                for i in user ?? [] {
+                    let userRealm = UserRealm(value: [i.id, i.firstName, i.lastName, i.isClosed, i.canAccessClosed, i.photo50])
+                    usersRealm.append(userRealm)
+                }
+                self.saveRealmData.saveUserData(usersRealm)
                 completion(user!)
             }catch{
                 print(error)

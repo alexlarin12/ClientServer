@@ -13,6 +13,7 @@
 		43039AA22373559B00D473E3 /* MainCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43039AA02373559B00D473E3 /* MainCollectionCell.swift */; };
 		43039AA32373559B00D473E3 /* MainCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43039AA12373559B00D473E3 /* MainCollectionCell.xib */; };
 		43039AAE237C769100D473E3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43039AAD237C769100D473E3 /* UserModel.swift */; };
+		43039AB1237FEED100D473E3 /* ItemsFriendRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43039AB0237FEED100D473E3 /* ItemsFriendRealm.swift */; };
 		434CC4D92366184E003DD715 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CC4D82366184E003DD715 /* MainViewController.swift */; };
 		4350E7DD2368B25E002249ED /* FriendUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350E7DC2368B25E002249ED /* FriendUserModel.swift */; };
 		4350E7DF2368B288002249ED /* GroupUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350E7DE2368B288002249ED /* GroupUserModel.swift */; };
@@ -21,6 +22,9 @@
 		436AB1FA236B582100F4F12F /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436AB1F9236B582100F4F12F /* FriendCell.swift */; };
 		436AB1FC236B65E900F4F12F /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436AB1FB236B65E900F4F12F /* ShadowView.swift */; };
 		436AB200236B671C00F4F12F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436AB1FF236B671C00F4F12F /* GradientView.swift */; };
+		437ABB21238169D80001B3CB /* ItemsGroupRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB20238169D80001B3CB /* ItemsGroupRealm.swift */; };
+		437ABB23238171670001B3CB /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB22238171670001B3CB /* UserRealm.swift */; };
+		437ABB25238178530001B3CB /* SaveRealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB24238178530001B3CB /* SaveRealmData.swift */; };
 		4389BC5B2365786300D29A8D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4389BC5A2365786300D29A8D /* WebKit.framework */; };
 		4389BC5E23657BCF00D29A8D /* VKviewController+WKNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BC5D23657BCF00D29A8D /* VKviewController+WKNavigationDelegate.swift */; };
 		4389BC6023658DEA00D29A8D /* VKservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BC5F23658DEA00D29A8D /* VKservice.swift */; };
@@ -66,6 +70,7 @@
 		43039AA02373559B00D473E3 /* MainCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionCell.swift; sourceTree = "<group>"; };
 		43039AA12373559B00D473E3 /* MainCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionCell.xib; sourceTree = "<group>"; };
 		43039AAD237C769100D473E3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		43039AB0237FEED100D473E3 /* ItemsFriendRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsFriendRealm.swift; sourceTree = "<group>"; };
 		434CC4D82366184E003DD715 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4350E7DC2368B25E002249ED /* FriendUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendUserModel.swift; sourceTree = "<group>"; };
 		4350E7DE2368B288002249ED /* GroupUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUserModel.swift; sourceTree = "<group>"; };
@@ -74,6 +79,9 @@
 		436AB1F9236B582100F4F12F /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		436AB1FB236B65E900F4F12F /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		436AB1FF236B671C00F4F12F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		437ABB20238169D80001B3CB /* ItemsGroupRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsGroupRealm.swift; sourceTree = "<group>"; };
+		437ABB22238171670001B3CB /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
+		437ABB24238178530001B3CB /* SaveRealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRealmData.swift; sourceTree = "<group>"; };
 		4389BC5A2365786300D29A8D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4389BC5D23657BCF00D29A8D /* VKviewController+WKNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VKviewController+WKNavigationDelegate.swift"; sourceTree = "<group>"; };
 		4389BC5F23658DEA00D29A8D /* VKservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKservice.swift; sourceTree = "<group>"; };
@@ -130,6 +138,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43039AAF237FEE7C00D473E3 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				43039AB0237FEED100D473E3 /* ItemsFriendRealm.swift */,
+				437ABB20238169D80001B3CB /* ItemsGroupRealm.swift */,
+				437ABB22238171670001B3CB /* UserRealm.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		4350E7DB2368AF8B002249ED /*   Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,9 +216,10 @@
 				4389BC612365906900D29A8D /* Sessions */,
 				438D38B3235E0C5C004F4B1E /* Services */,
 				438D38A7235DF9D2004F4B1E /* Controllers */,
-				436AB1F8236B57E200F4F12F /* Cells */,
 				4389BC5C23657ADB00D29A8D /* Extensions */,
+				436AB1F8236B57E200F4F12F /* Cells */,
 				4350E7DB2368AF8B002249ED /*   Models */,
+				43039AAF237FEE7C00D473E3 /* Database */,
 				438D3879235DF98D004F4B1E /* AppDelegate.swift */,
 				438D387D235DF98D004F4B1E /* Main.storyboard */,
 				438D3880235DF98E004F4B1E /* Assets.xcassets */,
@@ -243,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				4389BC5F23658DEA00D29A8D /* VKservice.swift */,
+				437ABB24238178530001B3CB /* SaveRealmData.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -520,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				437ABB25238178530001B3CB /* SaveRealmData.swift in Sources */,
 				438D38B5235E0C8E004F4B1E /* Session.swift in Sources */,
 				434CC4D92366184E003DD715 /* MainViewController.swift in Sources */,
 				438D38BA235F863A004F4B1E /* CircleImageView.swift in Sources */,
@@ -530,15 +551,18 @@
 				438D38BC2360CA57004F4B1E /* ProfileView.swift in Sources */,
 				436AB200236B671C00F4F12F /* GradientView.swift in Sources */,
 				43039A9F23734E7400D473E3 /* GroupCell.swift in Sources */,
+				43039AB1237FEED100D473E3 /* ItemsFriendRealm.swift in Sources */,
 				43039A9D23734E2D00D473E3 /* GroupsTableViewController.swift in Sources */,
 				43039AA22373559B00D473E3 /* MainCollectionCell.swift in Sources */,
 				438D38A9235DF9FB004F4B1E /* VKViewController.swift in Sources */,
 				4350E7DD2368B25E002249ED /* FriendUserModel.swift in Sources */,
 				4389BC6023658DEA00D29A8D /* VKservice.swift in Sources */,
 				4350E7DF2368B288002249ED /* GroupUserModel.swift in Sources */,
+				437ABB23238171670001B3CB /* UserRealm.swift in Sources */,
 				438D387A235DF98D004F4B1E /* AppDelegate.swift in Sources */,
 				436AB1FC236B65E900F4F12F /* ShadowView.swift in Sources */,
 				43039AAE237C769100D473E3 /* UserModel.swift in Sources */,
+				437ABB21238169D80001B3CB /* ItemsGroupRealm.swift in Sources */,
 				436AB1F7236B57BD00F4F12F /* FriendsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
