@@ -10,9 +10,6 @@ import Foundation
 
 class UserModel: Decodable {
     let response:[User]?
-    enum UserKeys:String, CodingKey {
-        case response = "response"
-    }
 }
 
 class User : Decodable{
@@ -25,13 +22,12 @@ class User : Decodable{
     var photo50:String = ""
    
     enum UserKeys:String, CodingKey {
-        case id = "id"
+        case id
         case firstName = "first_name"
         case lastName = "last_name"
         case isClosed = "is_closed"
         case canAccessClosed = "can_access_closed"
         case photo50 = "photo_50"
-       
     }
     
     convenience required init(from decoder:Decoder) throws{

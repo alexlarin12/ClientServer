@@ -11,18 +11,13 @@ import UIKit
 
 class PhotoUserModel: Codable {
     let response: ResponsePhoto?
-    enum PhotoUserKeys:String, CodingKey {
-        case response = "response"
-    }
 }
+
 class ResponsePhoto: Codable {
     var count:Int
     var items:[ItemsPhoto]?
-    enum ResponsePhotoKeys:String, CodingKey {
-        case count = "count"
-        case items = "items"
-    }
 }
+
 class ItemsPhoto: Codable {
     var id:Int = 0
     var albumId:Int = 0
@@ -31,27 +26,26 @@ class ItemsPhoto: Codable {
     var text:String = ""
     var date:Int = 0
     var postId:Int = 0
-    
     var type:String = ""
     var url:String = ""
     var width:Int = 0
     var height:Int = 0
     
     enum ItemsPhotoKeys:String, CodingKey {
-        case id = "id"
+        case id
         case albumId = "album_id"
         case ownerId = "owner_id"
         case userId = "user_id"
-        case sizes = "sizes"
-        case text = "text"
-        case date = "date"
+        case sizes
+        case text
+        case date
         case postId = "post_id"
     }
     enum SizesPhotoKeys:String, CodingKey {
-        case type = "type"
-        case url = "url"
-        case width = "width"
-        case height = "height"
+        case type
+        case url
+        case width
+        case height
     }
     convenience required init(from decoder:Decoder) throws{
         self.init()

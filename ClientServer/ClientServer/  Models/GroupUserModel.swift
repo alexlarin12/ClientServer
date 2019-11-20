@@ -11,18 +11,13 @@ import UIKit
 import RealmSwift
 class GroupUserModel: Codable {
     let response:ResponseGroup?
-    enum GroupUserKeys:String, CodingKey {
-        case response = "response"
-    }
 }
+
 class ResponseGroup: Codable {
     var count:Int
     var items:[ItemsGroup]?
-    enum ResponseGroupKeys:String, CodingKey {
-       case count = "count"
-       case items = "items"
-    }
 }
+
 class ItemsGroup: Codable {
   var id:Int = 0
   var name:String = ""
@@ -37,15 +32,15 @@ class ItemsGroup: Codable {
   var photo100:String = ""
   var photo200:String = ""
     enum ItemsGroupKeys:String, CodingKey {
-        case id = "id"
-        case name = "name"
+        case id
+        case name
         case screenName = "screen_name"
         case isClosed = "is_closed"
         case type = "type"
         case isAdmin = "is_admin"
         case isMember = "is_member"
         case isAdvertiser = "is_advertiser"
-        case site = "site"
+        case site 
         case photo50 = "photo_50"
         case photo100 = "photo_100"
         case photo200 = "photo_200"
