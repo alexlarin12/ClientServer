@@ -7,21 +7,19 @@
 //
 
 import UIKit
-import Realm
 
 class FriendsTableViewController: UITableViewController {
-    let vkService = VKService()
+    
+   let vkService = VKService()
     var friends = [ItemsFriend]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
- 
-        vkService.loadFriendsData(){[weak self] friends in
+   
+            vkService.loadFriendsData(){[weak self] friends in
             self?.friends = friends
             self?.tableView.reloadData()
-            
         }
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

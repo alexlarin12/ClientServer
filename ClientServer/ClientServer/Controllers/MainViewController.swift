@@ -24,7 +24,6 @@ class MainViewController: UIViewController {
         
      vkService.loadUserData(){[weak self] user in
             self?.user = user
-            print(user)
         for i in user{
             self?.MainLabel.text = i.firstName
             self?.LastNameUserLabel.text = i.lastName
