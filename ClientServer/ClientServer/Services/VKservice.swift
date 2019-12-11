@@ -10,9 +10,6 @@ import Foundation
 import Alamofire
 import RealmSwift
 
-   var friendsRealm = [ItemsFriendRealm]()
-   var groupsRealm = [ItemsGroupRealm]()
-   var usersRealm = [UserRealm]()
 
 
 class VKService {
@@ -20,8 +17,11 @@ class VKService {
     var user_id = String(Session.instance.userId)
     var friends = [ItemsFriend]()
     var saveRealmData = SaveRealmData()
+    var friendsRealm = [ItemsFriendRealm]()
+    var groupsRealm = [ItemsGroupRealm]()
+    var usersRealm = [UserRealm]()
     
-    func  loadFriendsData(completion: @escaping ([ItemsFriend])->()) {
+    func  loadFriendsData() {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
         urlConstructor.host = "api.vk.com"
@@ -42,45 +42,18 @@ class VKService {
             do {
                 let friends = try JSONDecoder().decode(FriendUserModel.self, from: data).response?.items
                 print(friends ?? "no friends")
-                for friend in friends!{
-                  let friendRealm = ItemsFriendRealm(value: [friend.id, friend.firstName,friend.lastName, friend.isClosed ?? true,friend.canAccessClosed ?? true, friend.photo50,friend.online,friend.trackCode])
-                  friendsRealm.append(friendRealm)
+                for friend in friends ?? [] {
+                    let friendRealm = ItemsFriendRealm(value: [friend.id, friend.firstName,friend.lastName, friend.isClosed ?? true,friend.canAccessClosed ?? true, friend.photo50,friend.online,friend.trackCode])
+                    self.friendsRealm.append(friendRealm)                
                 }
-               self.saveRealmData.saveFriendsData(friendsRealm)
-               
-               completion(friends!)
-            }catch{
-                print(error)
-            }
-        }
-    }
-    
-    func loadPhotosData() {
-        var urlConstructor = URLComponents()
-        urlConstructor.scheme = "https"
-        urlConstructor.host = "api.vk.com"
-        urlConstructor.path = "/method/photos.getAll"
-        urlConstructor.queryItems = [
-            URLQueryItem(name: "owner_id", value: "-\(user_id)"),
-            URLQueryItem(name: "access_token", value:access_token),
-            URLQueryItem(name: "v", value: "5.101")
-        ]
-        let request = URLRequest(url: urlConstructor.url!)
-        SessionManager.custom.request(request).responseData{
-            response in
-            guard let data = response.value else {
-                return
-            }
-            do {
-                let photos = try JSONDecoder().decode(PhotoUserModel.self, from: data).response?.items
-                print(photos ?? "no photos")
+                self.saveRealmData.saveFriendsData(self.friendsRealm)
             }catch{
                 print(error)
             }
         }
     }
 
-    func loadGroupsData(completion: @escaping ([ItemsGroup])->()) {
+    func loadGroupsData() {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
         urlConstructor.host = "api.vk.com"
@@ -104,18 +77,17 @@ class VKService {
                 print(groups ?? "no groups")
                 for group in groups ?? []{
                     let groupRealm = ItemsGroupRealm(value: [group.id, group.name,group.screenName, group.isClosed , group.type,group.isAdmin,group.isMember, group.isAdvertiser, group.site, group.photo50,group.photo100, group.photo200])
-                    groupsRealm.append(groupRealm)
+                    self.groupsRealm.append(groupRealm)
                 }
 
-                self.saveRealmData.saveGroupsData(groupsRealm)
-                completion(groups!)
+                self.saveRealmData.saveGroupsData(self.groupsRealm)
             }catch{
                 print(error)
             }
         }
     }
     
-    func  loadUserData(completion: @escaping ([User])->()) {
+    func  loadUserData() {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = "https"
         urlConstructor.host = "api.vk.com"
@@ -137,15 +109,56 @@ class VKService {
                 print(user ?? "no user")
                 for i in user ?? [] {
                     let userRealm = UserRealm(value: [i.id, i.firstName, i.lastName, i.isClosed, i.canAccessClosed, i.photo50])
-                    usersRealm.append(userRealm)
+                    self.usersRealm.append(userRealm)
                 }
-                self.saveRealmData.saveUserData(usersRealm)
-                completion(user!)
+                self.saveRealmData.saveUserData(self.usersRealm)
             }catch{
                 print(error)
             }
         }
     }
-    
+
+func loadPhotosData() {
+    var urlConstructor = URLComponents()
+    urlConstructor.scheme = "https"
+    urlConstructor.host = "api.vk.com"
+    urlConstructor.path = "/method/photos.getAll"
+    urlConstructor.queryItems = [
+        URLQueryItem(name: "owner_id", value: "-\(user_id)"),
+        URLQueryItem(name: "access_token", value:access_token),
+        URLQueryItem(name: "v", value: "5.101")
+    ]
+    let request = URLRequest(url: urlConstructor.url!)
+    SessionManager.custom.request(request).responseData{
+        response in
+        guard let data = response.value else {
+            return
+        }
+        do {
+            let photos = try JSONDecoder().decode(PhotoUserModel.self, from: data).response?.items
+            print(photos ?? "no photos")
+        }catch{
+            print(error)
+        }
+    }
 }
 
+}
+
+//   let fm = FileManager.default
+//   let docsUrl = try! fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+
+//   for friend in friends ?? [] {
+//      let friendRealm = ItemsFriendRealm(value: [friend.id, friend.firstName,friend.lastName, friend.isClosed ?? true,friend.canAccessClosed ?? true, friend.photo50,friend.online,friend.trackCode])
+
+//      let url = URL(string: friendRealm.photo50)
+//     if let data = try?Data(contentsOf: url!){
+//        let urlLocal = docsUrl.appendingPathComponent("\(friend.id)_photo_50")
+//         try! data.write(to: urlLocal)
+
+
+//       friendRealm.photo50_local = urlLocal.path
+//    }
+//    self.friendsRealm.append(friendRealm)
+//  }
+//  self.saveRealmData.saveFriendsData(self.friendsRealm)

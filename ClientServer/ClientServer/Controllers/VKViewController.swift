@@ -9,10 +9,13 @@
 import UIKit
 import WebKit
 import Alamofire
+import RealmSwift
 
 class VKViewController: UIViewController {
     let vkService = VKService()
     let session = Session.instance
+    let saveRealmData = SaveRealmData()
+  
   
     @IBOutlet weak var webview: WKWebView!{
           didSet{webview.navigationDelegate = self
@@ -37,8 +40,23 @@ class VKViewController: UIViewController {
             URLQueryItem(name: "v", value: "5.101")
         ]
         let request = URLRequest(url: urlComponents.url!)
-        webview.load(request)
-}
+       
+        
+        do{
+            let realm = try Realm()
+            let dataSessionToken = realm.objects(DataSession.self).sorted(byKeyPath: "token")
+           
+            //   self?.tableView.reloadData()
+            performSegue(withIdentifier: "fromVKViewController", sender: dataSessionToken)
+           
+            
+        }catch{
+            print(error)
+        }
+        
+         webview.load(request)
+        
+    }
     
    
     

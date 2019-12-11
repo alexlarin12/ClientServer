@@ -10,7 +10,11 @@ import UIKit
 
 class MainViewController: UIViewController {
     let vkService = VKService()
+    let saveRealmData = SaveRealmData()
     var user = [User]()
+    var userRealm = [UserRealm]()
+    var stepRealm = StepRealm()
+    var stepCounter = StepCounter()
     
     @IBOutlet weak var GradientView: GradientView!
     @IBOutlet weak var ShadowView: ShadowView!
@@ -21,33 +25,21 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-     vkService.loadUserData(){[weak self] user in
-            self?.user = user
-        for i in user{
+        stepRealm.countStepRealm(stepCounter)
+        print(stepCounter)
+      vkService.loadUserData()
+      saveRealmData.getUserRealm(){[weak self] userRealm in
+            
+         self?.userRealm = userRealm
+       
+         for i in userRealm{
             self?.MainLabel.text = i.firstName
             self?.LastNameUserLabel.text = i.lastName
             let avatar = i.photo50
             let urlAvatar = URL(string: avatar)!
             let dataAvatar = try? Data(contentsOf: urlAvatar)
             self?.MainImageView.image = UIImage(data: dataAvatar!)
-            
-        }
-       
-            
-        } // Do any additional setup after loading the view.
-      
+          }
+       }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -9,45 +9,40 @@
 import UIKit
 
 class GroupsTableViewController: UITableViewController {
-let vkService = VKService()
+    let vkService = VKService()
+    let saveRealmData = SaveRealmData()
     var groups = [ItemsGroup]()
+    var groupsRealm = [ItemsGroupRealm]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkService.loadGroupsData() {[weak self] groups in
-            self?.groups = groups
+        vkService.loadGroupsData()
+        saveRealmData.getGroupRealm(){[weak self] groupsRealm in
+        self?.groupsRealm = groupsRealm
             self?.tableView.reloadData()
             
-        }       // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        }
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return groupsRealm.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupIdentifire", for: indexPath) as! GroupCell
-        cell.GroupLabel.text = groups[indexPath.row].name
-        cell.SiteGroupLabel.text = groups[indexPath.row].site
+        cell.GroupLabel.text = groupsRealm[indexPath.row].name
+        cell.SiteGroupLabel.text = groupsRealm[indexPath.row].site
 
-        let avatar = groups[indexPath.row].photo50
-        let urlAvatar = URL(string: avatar)!
-        let dataAvatar = try? Data(contentsOf: urlAvatar)
+        let avatar = groupsRealm[indexPath.row].photo50
+        let urlAvatar = URL(string: avatar)
+        let dataAvatar = try? Data(contentsOf: urlAvatar!)
         cell.GroupImageView.image = UIImage(data: dataAvatar!)
-        // Configure the cell...
-
         return cell
     }
     

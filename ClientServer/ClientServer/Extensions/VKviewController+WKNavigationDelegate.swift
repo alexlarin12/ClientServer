@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 import WebKit
+import RealmSwift
 
 extension VKViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
        // let session = Session.instance
+       // let dataSessionRealm = [DataSession]()
         guard let url = navigationResponse.response.url, url.path == "/blank.html",
             let fragment = url.fragment else {
             decisionHandler(.allow)
@@ -36,10 +38,30 @@ extension VKViewController: WKNavigationDelegate {
         print(userId ?? "")
        // print(userId ?? "userId is empty")
         
+        
+        
+        
+        
+        
         session.token = token ?? ""
         session.userId = Int(userId ?? "") ?? 0
+        let dataSession = DataSession()
+        dataSession.token = session.token
+        dataSession.userId = session.userId
+        do {
+        let realm = try Realm()
+       
+            realm.beginWrite()
+          
+            realm.add(dataSession)
+            try realm.commitWrite()
+        }catch{
+            print(error)
+        }
+      
         
-        performSegue(withIdentifier: "fromVKViewController", sender: token)
+        performSegue(withIdentifier: "fromVKViewController", sender: dataSession.token)
         decisionHandler(.cancel)
     }
 }
+

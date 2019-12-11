@@ -12,35 +12,37 @@ class FriendsTableViewController: UITableViewController {
     
    let vkService = VKService()
     var friends = [ItemsFriend]()
+    var saveRealmData = SaveRealmData()
+    var friendsRealm = [ItemsFriendRealm]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
    
-            vkService.loadFriendsData(){[weak self] friends in
-            self?.friends = friends
-            self?.tableView.reloadData()
+        vkService.loadFriendsData()
+        saveRealmData.getFriendRealm(){[weak self] friendsRealm in
+        self?.friendsRealm = friendsRealm
+        self?.tableView.reloadData()
+            
         }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return friends.count
+        return friendsRealm.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendIdentifire", for: indexPath) as! FriendCell
-        cell.FriendLabel.text = friends[indexPath.row].firstName
-        cell.LastNameFriendLabel.text = friends[indexPath.row].lastName
+        cell.FriendLabel.text = friendsRealm[indexPath.row].firstName
+        cell.LastNameFriendLabel.text = friendsRealm[indexPath.row].lastName
         
-        let avatar = friends[indexPath.row].photo50
-        let urlAvatar = URL(string: avatar)!
-        let dataAvatar = try? Data(contentsOf: urlAvatar)
+        let avatar = friendsRealm[indexPath.row].photo50
+        let urlAvatar = URL(string: avatar)
+        let dataAvatar = try? Data(contentsOf: urlAvatar!)
         cell.FriendImageView.image = UIImage(data: dataAvatar!)
 
         return cell

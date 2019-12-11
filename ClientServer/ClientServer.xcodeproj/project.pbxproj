@@ -25,6 +25,9 @@
 		437ABB21238169D80001B3CB /* ItemsGroupRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB20238169D80001B3CB /* ItemsGroupRealm.swift */; };
 		437ABB23238171670001B3CB /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB22238171670001B3CB /* UserRealm.swift */; };
 		437ABB25238178530001B3CB /* SaveRealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB24238178530001B3CB /* SaveRealmData.swift */; };
+		437ABB27238A92500001B3CB /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB26238A92500001B3CB /* StepCounter.swift */; };
+		437ABB29238A93710001B3CB /* StepRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB28238A93710001B3CB /* StepRealm.swift */; };
+		437ABB31239D03810001B3CB /* DataSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437ABB30239D03810001B3CB /* DataSession.swift */; };
 		4389BC5B2365786300D29A8D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4389BC5A2365786300D29A8D /* WebKit.framework */; };
 		4389BC5E23657BCF00D29A8D /* VKviewController+WKNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BC5D23657BCF00D29A8D /* VKviewController+WKNavigationDelegate.swift */; };
 		4389BC6023658DEA00D29A8D /* VKservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BC5F23658DEA00D29A8D /* VKservice.swift */; };
@@ -82,6 +85,9 @@
 		437ABB20238169D80001B3CB /* ItemsGroupRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsGroupRealm.swift; sourceTree = "<group>"; };
 		437ABB22238171670001B3CB /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
 		437ABB24238178530001B3CB /* SaveRealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRealmData.swift; sourceTree = "<group>"; };
+		437ABB26238A92500001B3CB /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
+		437ABB28238A93710001B3CB /* StepRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRealm.swift; sourceTree = "<group>"; };
+		437ABB30239D03810001B3CB /* DataSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSession.swift; sourceTree = "<group>"; };
 		4389BC5A2365786300D29A8D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4389BC5D23657BCF00D29A8D /* VKviewController+WKNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VKviewController+WKNavigationDelegate.swift"; sourceTree = "<group>"; };
 		4389BC5F23658DEA00D29A8D /* VKservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKservice.swift; sourceTree = "<group>"; };
@@ -144,6 +150,8 @@
 				43039AB0237FEED100D473E3 /* ItemsFriendRealm.swift */,
 				437ABB20238169D80001B3CB /* ItemsGroupRealm.swift */,
 				437ABB22238171670001B3CB /* UserRealm.swift */,
+				437ABB26238A92500001B3CB /* StepCounter.swift */,
+				437ABB30239D03810001B3CB /* DataSession.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 			children = (
 				4389BC5F23658DEA00D29A8D /* VKservice.swift */,
 				437ABB24238178530001B3CB /* SaveRealmData.swift */,
+				437ABB28238A93710001B3CB /* StepRealm.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -543,8 +552,10 @@
 				437ABB25238178530001B3CB /* SaveRealmData.swift in Sources */,
 				438D38B5235E0C8E004F4B1E /* Session.swift in Sources */,
 				434CC4D92366184E003DD715 /* MainViewController.swift in Sources */,
+				437ABB29238A93710001B3CB /* StepRealm.swift in Sources */,
 				438D38BA235F863A004F4B1E /* CircleImageView.swift in Sources */,
 				436AB1FA236B582100F4F12F /* FriendCell.swift in Sources */,
+				437ABB31239D03810001B3CB /* DataSession.swift in Sources */,
 				4389BC63236590A500D29A8D /* SessionManager.swift in Sources */,
 				4389BC5E23657BCF00D29A8D /* VKviewController+WKNavigationDelegate.swift in Sources */,
 				4350E7E32368B2E1002249ED /* PhotoUserModel.swift in Sources */,
@@ -553,6 +564,7 @@
 				43039A9F23734E7400D473E3 /* GroupCell.swift in Sources */,
 				43039AB1237FEED100D473E3 /* ItemsFriendRealm.swift in Sources */,
 				43039A9D23734E2D00D473E3 /* GroupsTableViewController.swift in Sources */,
+				437ABB27238A92500001B3CB /* StepCounter.swift in Sources */,
 				43039AA22373559B00D473E3 /* MainCollectionCell.swift in Sources */,
 				438D38A9235DF9FB004F4B1E /* VKViewController.swift in Sources */,
 				4350E7DD2368B25E002249ED /* FriendUserModel.swift in Sources */,

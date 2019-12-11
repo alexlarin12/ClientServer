@@ -18,5 +18,11 @@ class ItemsFriendRealm: Object {
     @objc dynamic var online:Int = 0
     @objc dynamic var trackCode:String = ""
     
-    
+ //   override static func primaryKey() -> String? {
+   // return "id"
+   // }
+    override static func indexedProperties() -> [String] {
+        return ["firstName"]
+    }
+
 }
